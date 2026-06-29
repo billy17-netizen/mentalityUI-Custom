@@ -5669,44 +5669,44 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             local Items = {} do
                 Items["GroupBox"] = Instances:Create("Frame", {
                     Parent = self.Items["Content"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
-                    BackgroundTransparency = 0.65,
+                    BackgroundTransparency = 0,
                     BorderSizePixel = 0,
-                    BackgroundColor3 = FromRGB(25, 25, 25)
-                })  Items["GroupBox"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                    BackgroundColor3 = FromRGB(20, 20, 25)
+                })  Items["GroupBox"]:AddToTheme({BackgroundColor3 = "Background"})
 
                 Instances:Create("UICorner", {
                     Parent = Items["GroupBox"].Instance,
-                    Name = "\0",
-                    CornerRadius = UDimNew(0, 4)
+                    Name = " ",
+                    CornerRadius = UDimNew(0, 6)
                 })
 
                 Instances:Create("UIStroke", {
                     Parent = Items["GroupBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-                    Color = FromRGB(40, 40, 40),
-                    Transparency = 0.5
-                }) -- AddToTheme({Color = "Outline"}) wouldn't hurt but let's stick to raw colors for now if unsure
+                    Color = FromRGB(60, 60, 65),
+                    Transparency = 0
+                }) Items["GroupBox"]:AddToTheme({UIStroke = {Color = "Outline"}})
 
                 Items["Title"] = Instances:Create("TextLabel", {
                     Parent = Items["GroupBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     FontFace = Library.Font,
                     Text = GroupBox.Name,
                     TextColor3 = FromRGB(240, 240, 240),
                     TextSize = 13,
                     TextXAlignment = Enum.TextXAlignment.Left,
-                    Size = UDim2New(1, -12, 0, 20),
-                    Position = UDim2New(0, 8, 0, 4),
+                    Size = UDim2New(1, -16, 0, 24),
+                    Position = UDim2New(0, 10, 0, 2),
                     BackgroundTransparency = 1
                 })  Items["Title"]:AddToTheme({TextColor3 = "Text"})
                 
                 Items["Content"] = Instances:Create("Frame", {
                     Parent = Items["GroupBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     Position = UDim2New(0, 0, 0, 26),
                     AutomaticSize = Enum.AutomaticSize.Y,
@@ -5715,16 +5715,16 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 
                 Instances:Create("UIPadding", {
                     Parent = Items["Content"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     PaddingBottom = UDimNew(0, 6),
-                    PaddingLeft = UDimNew(0, 6),
-                    PaddingRight = UDimNew(0, 6),
-                    PaddingTop = UDimNew(0, 0)
+                    PaddingLeft = UDimNew(0, 8),
+                    PaddingRight = UDimNew(0, 8),
+                    PaddingTop = UDimNew(0, 2)
                 })
 
                 Instances:Create("UIListLayout", {
                     Parent = Items["Content"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Padding = UDimNew(0, 4),
                     SortOrder = Enum.SortOrder.LayoutOrder
                 })
@@ -5761,39 +5761,39 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             local Items = {} do
                 Items["TabBox"] = Instances:Create("Frame", {
                     Parent = self.Items["Content"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
-                    BackgroundTransparency = 0.65,
+                    BackgroundTransparency = 0,
                     BorderSizePixel = 0,
-                    BackgroundColor3 = FromRGB(25, 25, 25)
-                })  Items["TabBox"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                    BackgroundColor3 = FromRGB(20, 20, 25)
+                })  Items["TabBox"]:AddToTheme({BackgroundColor3 = "Background"})
 
                 Instances:Create("UICorner", {
                     Parent = Items["TabBox"].Instance,
-                    Name = "\0",
-                    CornerRadius = UDimNew(0, 4)
+                    Name = " ",
+                    CornerRadius = UDimNew(0, 6)
                 })
                 
                 Instances:Create("UIStroke", {
                     Parent = Items["TabBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-                    Color = FromRGB(40, 40, 40),
-                    Transparency = 0.5
-                })
+                    Color = FromRGB(60, 60, 65),
+                    Transparency = 0
+                }) Items["TabBox"]:AddToTheme({UIStroke = {Color = "Outline"}})
 
                 Items["TopBar"] = Instances:Create("Frame", {
                     Parent = Items["TabBox"].Instance,
-                    Name = "\0",
-                    Size = UDim2New(1, 0, 0, 24),
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 30),
                     BackgroundTransparency = 1,
                     ClipsDescendants = true
                 })
                 
                 Instances:Create("UIListLayout", {
                     Parent = Items["TopBar"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     FillDirection = Enum.FillDirection.Horizontal,
                     SortOrder = Enum.SortOrder.LayoutOrder,
                     Padding = UDimNew(0, 0)
@@ -5801,19 +5801,19 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
                 Items["Divider"] = Instances:Create("Frame", {
                     Parent = Items["TabBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 1),
-                    Position = UDim2New(0, 0, 0, 24),
+                    Position = UDim2New(0, 0, 0, 30),
                     BorderSizePixel = 0,
-                    BackgroundColor3 = FromRGB(40, 40, 40),
-                    BackgroundTransparency = 0.5
-                })
+                    BackgroundColor3 = FromRGB(60, 60, 65),
+                    BackgroundTransparency = 0
+                }) Items["Divider"]:AddToTheme({BackgroundColor3 = "Outline"})
 
                 Items["Content"] = Instances:Create("Frame", {
                     Parent = Items["TabBox"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
-                    Position = UDim2New(0, 0, 0, 26),
+                    Position = UDim2New(0, 0, 0, 31),
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundTransparency = 1
                 })
@@ -5842,12 +5842,13 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 local TItems = {}
                 TItems["Button"] = Instances:Create("TextButton", {
                     Parent = Items["TopBar"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Text = Name,
                     FontFace = Library.Font,
                     TextSize = 13,
                     TextColor3 = FromRGB(240, 240, 240),
-                    TextTransparency = 0.4,
+                    TextTransparency = 0.5,
+                    BackgroundColor3 = FromRGB(255, 255, 255),
                     BackgroundTransparency = 1,
                     AutomaticSize = Enum.AutomaticSize.X,
                     Size = UDim2New(0, 0, 1, 0)
@@ -5855,14 +5856,23 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 
                 Instances:Create("UIPadding", {
                     Parent = TItems["Button"].Instance,
-                    Name = "\0",
-                    PaddingLeft = UDimNew(0, 10),
-                    PaddingRight = UDimNew(0, 10)
+                    Name = " ",
+                    PaddingLeft = UDimNew(0, 14),
+                    PaddingRight = UDimNew(0, 14)
+                })
+
+                TItems["ActiveHighlight"] = Instances:Create("Frame", {
+                    Parent = TItems["Button"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 1, 0),
+                    BackgroundColor3 = FromRGB(255, 255, 255),
+                    BackgroundTransparency = 0.95,
+                    Visible = false
                 })
 
                 TItems["Container"] = Instances:Create("Frame", {
                     Parent = Items["Content"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundTransparency = 1,
@@ -5871,16 +5881,16 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 
                 Instances:Create("UIPadding", {
                     Parent = TItems["Container"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     PaddingBottom = UDimNew(0, 6),
-                    PaddingLeft = UDimNew(0, 6),
-                    PaddingRight = UDimNew(0, 6),
-                    PaddingTop = UDimNew(0, 0)
+                    PaddingLeft = UDimNew(0, 8),
+                    PaddingRight = UDimNew(0, 8),
+                    PaddingTop = UDimNew(0, 4)
                 })
 
                 Instances:Create("UIListLayout", {
                     Parent = TItems["Container"].Instance,
-                    Name = "\0",
+                    Name = " ",
                     Padding = UDimNew(0, 4),
                     SortOrder = Enum.SortOrder.LayoutOrder
                 })
@@ -5890,10 +5900,12 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 TItems["Button"]:Connect("MouseButton1Down", function()
                     for _, T in pairs(TabBox.Tabs) do
                         T.TItems["Container"].Instance.Visible = false
-                        T.TItems["Button"]:Tween(nil, {TextTransparency = 0.4})
+                        T.TItems["Button"]:Tween(nil, {TextTransparency = 0.5})
+                        T.TItems["ActiveHighlight"].Instance.Visible = false
                     end
                     TItems["Container"].Instance.Visible = true
                     TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
                 end)
 
@@ -5904,6 +5916,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 if #TabBox.Tabs == 1 then
                     TItems["Container"].Instance.Visible = true
                     TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
                 end
                 
