@@ -5672,6 +5672,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
+                    ZIndex = 2,
                     BackgroundTransparency = 0,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(20, 20, 25)
@@ -5701,7 +5702,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     TextXAlignment = Enum.TextXAlignment.Left,
                     Size = UDim2New(1, -16, 0, 24),
                     Position = UDim2New(0, 10, 0, 2),
-                    BackgroundTransparency = 1
+                    ZIndex = 2, BackgroundTransparency = 1
                 })  Items["Title"]:AddToTheme({TextColor3 = "Text"})
                 
                 Items["Content"] = Instances:Create("Frame", {
@@ -5710,6 +5711,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Size = UDim2New(1, 0, 0, 0),
                     Position = UDim2New(0, 0, 0, 26),
                     AutomaticSize = Enum.AutomaticSize.Y,
+                    ZIndex = 2,
                     BackgroundTransparency = 1
                 })
                 
@@ -5764,6 +5766,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
+                    ZIndex = 2,
                     BackgroundTransparency = 0,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(20, 20, 25)
@@ -5788,6 +5791,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Name = " ",
                     Size = UDim2New(1, 0, 0, 30),
                     BackgroundTransparency = 1,
+                    ZIndex = 2,
                     ClipsDescendants = true
                 })
                 
@@ -5806,6 +5810,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Position = UDim2New(0, 0, 0, 30),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(60, 60, 65),
+                    ZIndex = 2,
                     BackgroundTransparency = 0
                 }) Items["Divider"]:AddToTheme({BackgroundColor3 = "Outline"})
 
@@ -5815,6 +5820,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Size = UDim2New(1, 0, 0, 0),
                     Position = UDim2New(0, 0, 0, 31),
                     AutomaticSize = Enum.AutomaticSize.Y,
+                    ZIndex = 2,
                     BackgroundTransparency = 1
                 })
             end
@@ -5851,6 +5857,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BackgroundColor3 = FromRGB(255, 255, 255),
                     BackgroundTransparency = 1,
                     AutomaticSize = Enum.AutomaticSize.X,
+                    ZIndex = 2,
                     Size = UDim2New(0, 0, 1, 0)
                 })  TItems["Button"]:AddToTheme({TextColor3 = "Text"})
                 
@@ -5866,6 +5873,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Name = " ",
                     Size = UDim2New(1, 0, 1, 0),
                     BackgroundColor3 = FromRGB(255, 255, 255),
+                    ZIndex = 2,
                     BackgroundTransparency = 0.95,
                     Visible = false
                 })
@@ -5874,6 +5882,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Parent = Items["Content"].Instance,
                     Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
+                    ZIndex = 2,
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundTransparency = 1,
                     Visible = false
@@ -9223,6 +9232,7 @@ end
 
 getgenv().Library = Library
 return Library
+
 
 
 
