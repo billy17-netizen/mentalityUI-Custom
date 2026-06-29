@@ -75,7 +75,7 @@ local Library do
             Direction = Enum.EasingDirection.Out
         },
 
-        FadeSpeed = 0.2,
+        FadeSpeed = 0,
 
         Folders = {
             Directory = "Samuraa1Hub",
@@ -269,7 +269,7 @@ local Library do
             local Item = Item or self.Item 
 
             local OldTransparency = Item[Property]
-            Item[Property] = Visibility and 1 or OldTransparency
+            Item[Property] = Visibility and OldTransparency or 1
 
             local NewTween = Tween:Create(Item, TweenInfo.new(Speed or Library.Tween.Time, Library.Tween.Style, Library.Tween.Direction), {
                 [Property] = Visibility and OldTransparency or 1
@@ -2602,7 +2602,7 @@ local Library do
             Items["Accent"].Instance.Size = UDim2New(0, 0, 1, 0)
 
             task.spawn(function()
-                task.wait(0.05)
+                --task.wait(0.05)
                 Items["Title"]:Tween(fadeInfo, {TextTransparency = 0})
                 Items["Description"]:Tween(fadeInfo, {TextTransparency = 0.3})
                 Items["Icon"]:Tween(fadeInfo, {ImageTransparency = 0})
@@ -3753,7 +3753,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                                     task.spawn(function()
                                         Value:TweenElements(true)
                                     end)
-                                    task.wait(0.055)
+                                    --task.wait(0.055)
                                 end
                                 Debounce = false
                             end)
@@ -5985,7 +5985,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                         task.spawn(function()
                             for Index, Value in Settings.Elements do
                                 Value:RefreshPosition(true)
-                                task.wait(0.03)
+                                --task.wait(0.03)
                             end
                         end)
 
@@ -6927,7 +6927,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                             task.spawn(function()
                                 Value:RefreshPosition(true)
                             end)
-                            task.wait(0.05)
+                            --task.wait(0.05)
                         end
                     end)
                     
@@ -8955,6 +8955,8 @@ end
 
 getgenv().Library = Library
 return Library
+
+
 
 
 
