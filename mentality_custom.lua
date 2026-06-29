@@ -5782,8 +5782,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 end)
             end
 
-            Items["Indicator"].Instance.Position = UDim2New(0, 60, 0, 0)
-            Items["Text"].Instance.Position = UDim2New(0, 84, 0, 0)
+            Items["Indicator"].Instance.Position = UDim2New(0, 0, 0, 0)
+            Items["Text"].Instance.Position = UDim2New(0, 24, 0, 0)
 
             --Toggle.Section.Items["Fade"].Instance.Size = UDim2New(1, 0, 0, Toggle.Section.Items["Content"].Instance.AbsoluteSize.X - 180)
 
@@ -6165,11 +6165,11 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Toggle:RefreshPosition(Bool)
                 if Bool then 
-                    Items["Indicator"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 0)})
-                    Items["Text"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 24, 0, 0)})
+                    Items["Indicator"].Instance.Position = UDim2New(0, 0, 0, 0)
+                    Items["Text"].Instance.Position = UDim2New(0, 24, 0, 0)
                 else
-                    Items["Indicator"].Instance.Position = UDim2New(0, 60, 0, 0)
-                    Items["Text"].Instance.Position = UDim2New(0, 84, 0, 0)
+                    Items["Indicator"].Instance.Position = UDim2New(0, 0, 0, 0)
+                    Items["Text"].Instance.Position = UDim2New(0, 24, 0, 0)
                 end 
             end
 
@@ -8955,6 +8955,8 @@ end
 
 getgenv().Library = Library
 return Library
+
+
 
 
 
