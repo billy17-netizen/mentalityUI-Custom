@@ -1869,7 +1869,7 @@ local Library do
                 local SlideX = MathClamp((Input.Position.X - Items["Palette"].Instance.AbsolutePosition.X) / Items["Palette"].Instance.AbsoluteSize.X, 0, 0.955)
                 local SlideY = MathClamp((Input.Position.Y - Items["Palette"].Instance.AbsolutePosition.Y) / Items["Palette"].Instance.AbsoluteSize.Y, 0, 0.955)
 
-                Items["PaletteDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(SlideX, 0, SlideY, 0)})
+                Items["PaletteDragger"].Instance.Position = UDim2New(SlideX, 0, SlideY, 0)
                 Colorpicker:Update()
             end
             
@@ -1887,7 +1887,7 @@ local Library do
 
                 local SlideX = MathClamp((Input.Position.X - Items["Hue"].Instance.AbsolutePosition.X) / Items["Hue"].Instance.AbsoluteSize.X, 0, 0.955)
 
-                Items["HueDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(SlideX, 0, 0.5, 0)})
+                Items["HueDragger"].Instance.Position = UDim2New(SlideX, 0, 0.5, 0)
                 Colorpicker:Update()
             end
 
@@ -1905,7 +1905,7 @@ local Library do
 
                 local SlideX = MathClamp((Input.Position.X - Items["Alpha"].Instance.AbsolutePosition.X) / Items["Alpha"].Instance.AbsoluteSize.X, 0, 0.955)
 
-                Items["AlphaDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(SlideX, 0, 0.5, 0)})
+                Items["AlphaDragger"].Instance.Position = UDim2New(SlideX, 0, 0.5, 0)
                 Colorpicker:Update(true)
             end
 
@@ -2009,9 +2009,9 @@ local Library do
                     
                 local HuePositionX = MathClamp(Colorpicker.Hue, 0, 0.955)
 
-                Items["PaletteDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(PaletteValueX, 0, PaletteValueY, 0)})
-                Items["HueDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(HuePositionX, 0, 0.5, 0)})
-                Items["AlphaDragger"]:Tween(TweenInfo.new(Library.Tween.Time, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(AlphaPositionX, 0, 0.5, 0)})
+                Items["PaletteDragger"].Instance.Position = UDim2New(PaletteValueX, 0, PaletteValueY, 0)
+                Items["HueDragger"].Instance.Position = UDim2New(HuePositionX, 0, 0.5, 0)
+                Items["AlphaDragger"].Instance.Position = UDim2New(AlphaPositionX, 0, 0.5, 0)
                 Colorpicker:Update()
             end
 
@@ -2815,7 +2815,7 @@ local Library do
     
                 local Set = function(Input)
                     local DragDelta = Input.Position - DragStart
-                    Items["MainFrame"]:Tween(TweenInfo.new(0.16, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2New(StartPosition.X.Scale, StartPosition.X.Offset + DragDelta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + DragDelta.Y)})
+                    Items["MainFrame"].Instance.Position = UDim2New(StartPosition.X.Scale, StartPosition.X.Offset + DragDelta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + DragDelta.Y)
                 end
     
                 Items["MainFrame"]:Connect("InputBegan", function(Input)
@@ -3481,7 +3481,7 @@ local Library do
                         
                         Items["PagePlaceholder"].Instance.AnchorPoint = TargetAnchorPoint
                         Items["PagePlaceholder"]:Tween(TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Size = TargetSize})
-                        Items["PagePlaceholder"]:Tween(TweenInfo.new(0.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = TargetPosition})
+                        Items["PagePlaceholder"].Instance.Position = TargetPosition
                     end
                 end)
             end
@@ -6536,8 +6536,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 Items["RealSlider"].Instance.Position = UDim2New(0, 20, 1, -6)
                 Items["Text"].Instance.Position = UDim2New(0, 0, 0, 0)
             else
-                Items["RealSlider"].Instance.Position = UDim2New(0, 80, 1, -3)
-                Items["Text"].Instance.Position = UDim2New(0, 80, 0, 0)
+                Items["RealSlider"].Instance.Position = UDim2New(0, 20, 1, -3)
+                Items["Text"].Instance.Position = UDim2New(0, 0, 0, 0)
             end
 
             function Slider:Get()
@@ -6555,11 +6555,11 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     return
                 end
                 if Bool then 
-                    Items["RealSlider"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 20, 1, -3)})
-                    Items["Text"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 0)})
+                    Items["RealSlider"].Instance.Position = UDim2New(0, 20, 1, -3)
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 0)
                 else
-                    Items["RealSlider"].Instance.Position = UDim2New(0, 80, 1, -3)
-                    Items["Text"].Instance.Position = UDim2New(0, 80, 0, 0)
+                    Items["RealSlider"].Instance.Position = UDim2New(0, 20, 1, -3)
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 0)
                 end
             end
 
@@ -6865,8 +6865,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             --ropdown.Section.Items["Fade"].Instance.Size = UDim2New(1, 0, 0, Dropdown.Section.Items["Content"].Instance.AbsoluteSize.X - 180)
 
-            Items["Text"].Instance.Position = UDim2New(0, 30, 0.5, 0)
-            Items["RealDropdown"].Instance.Position = UDim2New(1, 30, 0, 0)
+            Items["Text"].Instance.Position = UDim2New(0, 0, 0.5, 0)
+            Items["RealDropdown"].Instance.Position = UDim2New(1, 0, 0, 0)
 
             function Dropdown:Get()
                 return Dropdown.Value
@@ -6878,11 +6878,11 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Dropdown:RefreshPosition(Bool)
                 if Bool then
-                    Items["Text"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
-                    Items["RealDropdown"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(1, 0, 0, 0)})
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0.5, 0)
+                    Items["RealDropdown"].Instance.Position = UDim2New(1, 0, 0, 0)
                 else
-                    Items["Text"].Instance.Position = UDim2New(0, 30, 0.5, 0)
-                    Items["RealDropdown"].Instance.Position = UDim2New(1, 30, 0, 0)
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0.5, 0)
+                    Items["RealDropdown"].Instance.Position = UDim2New(1, 0, 0, 0)
                 end
             end
 
@@ -7102,7 +7102,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     AnchorPoint = Vector2New(0, 0.5),
                     BorderSizePixel = 0,
                     BackgroundTransparency = 1,
-                    Position = UDim2New(0, 30, 0.5, 0),
+                    Position = UDim2New(0, 0, 0.5, 0),
                     BorderColor3 = FromRGB(0, 0, 0),
                     AutomaticSize = Enum.AutomaticSize.X,
                     TextSize = 14,
@@ -7130,40 +7130,40 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 function OptionData:RefreshPosition(Bool)
                     if Bool then 
                         if OptionData.Selected then
-                            OptionAccent:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
-                            OptionText:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 15, 0.5, 0)})
+                            OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
+                            OptionText.Instance.Position = UDim2New(0, 15, 0.5, 0)
                         else
-                            OptionText:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
+                            OptionText.Instance.Position = UDim2New(0, 0, 0.5, 0)
                         end
                     else
                         if OptionData.Selected then
-                            OptionAccent.Instance.Position = UDim2New(0, 30, 0.5, 0)
+                            OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
                             OptionText.Instance.Position = UDim2New(0, 45, 0.5, 0)
                         else
-                            OptionText.Instance.Position = UDim2New(0, 30, 0.5, 0)
+                            OptionText.Instance.Position = UDim2New(0, 0, 0.5, 0)
                         end
                     end
 
                     --if Bool then
-                        --OptionAccent:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
+                        --OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
                     --else
-                        --OptionAccent.Instance.Position = UDim2New(0, 30, 0.5, 0)
+                        --OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
                     --end
                     
                     --[[
                     if Bool then 
                         if OptionData.Selected then 
-                            OptionAccent:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
-                            OptionText:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 15, 0.5, 0)})
+                            OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
+                            OptionText.Instance.Position = UDim2New(0, 15, 0.5, 0)
                         else
-                            OptionText:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0.5, 0)})
+                            OptionText.Instance.Position = UDim2New(0, 0, 0.5, 0)
                         end
                     else
                         if OptionData.Selected then
-                            OptionAccent.Instance.Position = UDim2New(0, 30, 0.5, 0)
+                            OptionAccent.Instance.Position = UDim2New(0, 0, 0.5, 0)
                             OptionText.Instance.Position = UDim2New(0, 45, 0.5, 0)
                         else
-                            OptionText.Instance.Position = UDim2New(0, 30, 0.5, 0)
+                            OptionText.Instance.Position = UDim2New(0, 0, 0.5, 0)
                         end
                     end
                     --]]
@@ -7340,7 +7340,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Size = UDim2New(1, -36, 0, 0),
                     BorderSizePixel = 0,
                     BackgroundTransparency = 1,
-                    Position = UDim2New(0, 30, 0, 5),
+                    Position = UDim2New(0, 0, 0, 5),
                     BorderColor3 = FromRGB(0, 0, 0),
                     ZIndex = 2,
                     TextSize = 14,
@@ -7363,18 +7363,18 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Label:RefreshPosition(Bool)
                 if Bool then 
-                    Items["Text"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 5)})
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 5)
 
                     if Items["SubElements"] then
-                        Items["SubElements"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 30)})
-                        Tween:Create(Items["Label"].Instance:FindFirstChild("nig"), TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(1, -16, 1, -6)}, true)
+                        Items["SubElements"].Instance.Position = UDim2New(0, 0, 0, 30)
+                        Items["Label"].Instance:FindFirstChild("nig").Position = UDim2New(1, -16, 1, -6)
                     end
                 else 
-                    Items["Text"].Instance.Position = UDim2New(0, 30, 0, 5)
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 5)
 
                     if Items["SubElements"] then
-                        Items["SubElements"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 30, 0, 30)})
-                        Tween:Create(Items["Label"].Instance:FindFirstChild("nig"), TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(1, 30, 1, -6)}, true)
+                        Items["SubElements"].Instance.Position = UDim2New(0, 0, 0, 30)
+                        Items["Label"].Instance:FindFirstChild("nig").Position = UDim2New(1, -16, 1, -6)
                     end
                 end
             end
@@ -7731,13 +7731,13 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Keybind:RefreshPosition(Bool)
                 if Bool then 
-                    Items["Text"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 5)})
-                    Items["SubElements"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 30)})
-                    Items["Modes"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(1, 0, 0, 0)})
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 5)
+                    Items["SubElements"].Instance.Position = UDim2New(0, 0, 0, 30)
+                    Items["Modes"].Instance.Position = UDim2New(1, 0, 0, 0)
                 else
-                    Items["Text"].Instance.Position = UDim2New(0, 30, 0, 5)
-                    Items["SubElements"].Instance.Position = UDim2New(0, 30, 0, 30)
-                    Items["Modes"].Instance.Position = UDim2New(1, 30, 0, 0)
+                    Items["Text"].Instance.Position = UDim2New(0, 0, 0, 5)
+                    Items["SubElements"].Instance.Position = UDim2New(0, 0, 0, 30)
+                    Items["Modes"].Instance.Position = UDim2New(1, 0, 0, 0)
                 end
             end
 
@@ -8088,9 +8088,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Textbox:RefreshPosition(Bool)
                 if Bool then
-                    Items["Background"]:Tween(TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 0)})
+                    Items["Background"].Instance.Position = UDim2New(0, 0, 0, 0)
                 else
-                    Items["Background"].Instance.Position = UDim2New(0, 30, 0, 0)
+                    Items["Background"].Instance.Position = UDim2New(0, 0, 0, 0)
                 end
             end
 
@@ -8287,13 +8287,13 @@ Position = UDim2New(0.5, 0, 0.5, 0),
 
             function Dropdown:RefreshPosition(Bool)
                 if Bool then
-                    Items["Background"]:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 30)})
-                    Items["Search"]:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 0)})
-                    Items["_"]:Tween(TweenInfo.new(1, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position = UDim2New(0, 0, 0, 25)})
+                    Items["Background"].Instance.Position = UDim2New(0, 0, 0, 30)
+                    Items["Search"].Instance.Position = UDim2New(0, 0, 0, 0)
+                    Items["_"].Instance.Position = UDim2New(0, 0, 0, 25)
                 else
-                    Items["Background"].Instance.Position = UDim2New(0, 30, 0, 30)
-                    Items["Search"].Instance.Position = UDim2New(0, 30, 0, 0)
-                    Items["_"].Instance.Position = UDim2New(0, 30, 0, 25)
+                    Items["Background"].Instance.Position = UDim2New(0, 0, 0, 30)
+                    Items["Search"].Instance.Position = UDim2New(0, 0, 0, 0)
+                    Items["_"].Instance.Position = UDim2New(0, 0, 0, 25)
                 end
             end
 
