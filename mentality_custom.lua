@@ -5683,13 +5683,13 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     CornerRadius = UDimNew(0, 6)
                 })
 
-                Instances:Create("UIStroke", {
+                local gbStroke = Instances:Create("UIStroke", {
                     Parent = Items["GroupBox"].Instance,
                     Name = " ",
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
                     Color = FromRGB(60, 60, 65),
                     Transparency = 0
-                }) Items["GroupBox"]:AddToTheme({UIStroke = {Color = "Outline"}})
+                }) gbStroke:AddToTheme({Color = "Outline"})
 
                 Items["Title"] = Instances:Create("TextLabel", {
                     Parent = Items["GroupBox"].Instance,
@@ -5775,13 +5775,13 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     CornerRadius = UDimNew(0, 6)
                 })
                 
-                Instances:Create("UIStroke", {
+                local tbStroke = Instances:Create("UIStroke", {
                     Parent = Items["TabBox"].Instance,
                     Name = " ",
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
                     Color = FromRGB(60, 60, 65),
                     Transparency = 0
-                }) Items["TabBox"]:AddToTheme({UIStroke = {Color = "Outline"}})
+                }) tbStroke:AddToTheme({Color = "Outline"})
 
                 Items["TopBar"] = Instances:Create("Frame", {
                     Parent = Items["TabBox"].Instance,
