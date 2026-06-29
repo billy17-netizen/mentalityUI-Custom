@@ -13,7 +13,7 @@
 -- 1) Load the library (raw from GitHub — change branch if you fork)
 -- ───────────────────────────────────────────────────────────────────────────
 local LIB_URL = "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/mentality_custom.lua"
-local Library = loadstring(game:HttpGet(LIB_URL))()
+local Library = loadstring(game:HttpGet(LIB_URL .. "?t=" .. tostring(os.time())))()
 
 -- Library:SetKeybindRowsVisible(false) — hide all per-row keybind UIs (e.g. mobile).
 
