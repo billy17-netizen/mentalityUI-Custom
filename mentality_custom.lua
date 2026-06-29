@@ -5654,6 +5654,269 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             return setmetatable(Section, Library.Sections)
         end
 
+
+        Library.Sections.GroupBox = function(self, Data)
+            Data = Data or {}
+            
+            local GroupBox = {
+                Window = self.Window,
+                Page = self.Page,
+                Section = self.Section or self,
+                Name = Data.Name or Data.name or "GroupBox",
+                Elements = {}
+            }
+
+            local Items = {} do
+                Items["GroupBox"] = Instances:Create("Frame", {
+                    Parent = self.Items["Content"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 0),
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundTransparency = 0.65,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(25, 25, 25)
+                })  Items["GroupBox"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+
+                Instances:Create("UICorner", {
+                    Parent = Items["GroupBox"].Instance,
+                    Name = " ",
+                    CornerRadius = UDimNew(0, 4)
+                })
+
+                Instances:Create("UIStroke", {
+                    Parent = Items["GroupBox"].Instance,
+                    Name = " ",
+                    ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+                    Color = FromRGB(40, 40, 40),
+                    Transparency = 0.5
+                }) -- AddToTheme({Color = "Outline"}) wouldn't hurt but let's stick to raw colors for now if unsure
+
+                Items["Title"] = Instances:Create("TextLabel", {
+                    Parent = Items["GroupBox"].Instance,
+                    Name = " ",
+                    FontFace = Library.Font,
+                    Text = GroupBox.Name,
+                    TextColor3 = FromRGB(240, 240, 240),
+                    TextSize = 13,
+                    TextXAlignment = Enum.TextXAlignment.Left,
+                    Size = UDim2New(1, -12, 0, 20),
+                    Position = UDim2New(0, 8, 0, 4),
+                    BackgroundTransparency = 1
+                })  Items["Title"]:AddToTheme({TextColor3 = "Text"})
+                
+                Items["Content"] = Instances:Create("Frame", {
+                    Parent = Items["GroupBox"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 0),
+                    Position = UDim2New(0, 0, 0, 26),
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundTransparency = 1
+                })
+                
+                Instances:Create("UIPadding", {
+                    Parent = Items["Content"].Instance,
+                    Name = " ",
+                    PaddingBottom = UDimNew(0, 6),
+                    PaddingLeft = UDimNew(0, 6),
+                    PaddingRight = UDimNew(0, 6),
+                    PaddingTop = UDimNew(0, 0)
+                })
+
+                Instances:Create("UIListLayout", {
+                    Parent = Items["Content"].Instance,
+                    Name = " ",
+                    Padding = UDimNew(0, 4),
+                    SortOrder = Enum.SortOrder.LayoutOrder
+                })
+            end
+
+            GroupBox.Items = Items
+            
+            function GroupBox:RefreshPosition(Bool)
+                for _, Elem in GroupBox.Elements do
+                    if Elem.RefreshPosition then Elem:RefreshPosition(Bool) end
+                end
+            end
+            
+            if self.Elements then
+                self.Elements[#self.Elements + 1] = GroupBox
+            end
+
+            return setmetatable(GroupBox, Library.Sections)
+        end
+
+        Library.Sections.TabBox = function(self, Data)
+            Data = Data or {}
+            
+            local TabBox = {
+                Window = self.Window,
+                Page = self.Page,
+                Section = self.Section or self,
+                Name = Data.Name or Data.name or "TabBox",
+                Tabs = {},
+                Elements = {},
+                ActiveTab = nil
+            }
+
+            local Items = {} do
+                Items["TabBox"] = Instances:Create("Frame", {
+                    Parent = self.Items["Content"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 0),
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundTransparency = 0.65,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(25, 25, 25)
+                })  Items["TabBox"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+
+                Instances:Create("UICorner", {
+                    Parent = Items["TabBox"].Instance,
+                    Name = " ",
+                    CornerRadius = UDimNew(0, 4)
+                })
+                
+                Instances:Create("UIStroke", {
+                    Parent = Items["TabBox"].Instance,
+                    Name = " ",
+                    ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+                    Color = FromRGB(40, 40, 40),
+                    Transparency = 0.5
+                })
+
+                Items["TopBar"] = Instances:Create("Frame", {
+                    Parent = Items["TabBox"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 24),
+                    BackgroundTransparency = 1,
+                    ClipsDescendants = true
+                })
+                
+                Instances:Create("UIListLayout", {
+                    Parent = Items["TopBar"].Instance,
+                    Name = " ",
+                    FillDirection = Enum.FillDirection.Horizontal,
+                    SortOrder = Enum.SortOrder.LayoutOrder,
+                    Padding = UDimNew(0, 0)
+                })
+
+                Items["Divider"] = Instances:Create("Frame", {
+                    Parent = Items["TabBox"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 1),
+                    Position = UDim2New(0, 0, 0, 24),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(40, 40, 40),
+                    BackgroundTransparency = 0.5
+                })
+
+                Items["Content"] = Instances:Create("Frame", {
+                    Parent = Items["TabBox"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 0),
+                    Position = UDim2New(0, 0, 0, 26),
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundTransparency = 1
+                })
+            end
+
+            TabBox.Items = Items
+
+            function TabBox:RefreshPosition(Bool)
+                for _, T in TabBox.Tabs do
+                    for _, Elem in T.Elements do
+                        if Elem.RefreshPosition then Elem:RefreshPosition(Bool) end
+                    end
+                end
+            end
+            
+            function TabBox:Tab(Name)
+                local Tab = {
+                    Name = Name,
+                    Window = self.Window,
+                    Page = self.Page,
+                    Section = self.Section or self,
+                    TabBox = TabBox,
+                    Elements = {}
+                }
+                
+                local TItems = {}
+                TItems["Button"] = Instances:Create("TextButton", {
+                    Parent = Items["TopBar"].Instance,
+                    Name = " ",
+                    Text = Name,
+                    FontFace = Library.Font,
+                    TextSize = 13,
+                    TextColor3 = FromRGB(240, 240, 240),
+                    TextTransparency = 0.4,
+                    BackgroundTransparency = 1,
+                    AutomaticSize = Enum.AutomaticSize.X,
+                    Size = UDim2New(0, 0, 1, 0)
+                })  TItems["Button"]:AddToTheme({TextColor3 = "Text"})
+                
+                Instances:Create("UIPadding", {
+                    Parent = TItems["Button"].Instance,
+                    Name = " ",
+                    PaddingLeft = UDimNew(0, 10),
+                    PaddingRight = UDimNew(0, 10)
+                })
+
+                TItems["Container"] = Instances:Create("Frame", {
+                    Parent = Items["Content"].Instance,
+                    Name = " ",
+                    Size = UDim2New(1, 0, 0, 0),
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundTransparency = 1,
+                    Visible = false
+                })
+                
+                Instances:Create("UIPadding", {
+                    Parent = TItems["Container"].Instance,
+                    Name = " ",
+                    PaddingBottom = UDimNew(0, 6),
+                    PaddingLeft = UDimNew(0, 6),
+                    PaddingRight = UDimNew(0, 6),
+                    PaddingTop = UDimNew(0, 0)
+                })
+
+                Instances:Create("UIListLayout", {
+                    Parent = TItems["Container"].Instance,
+                    Name = " ",
+                    Padding = UDimNew(0, 4),
+                    SortOrder = Enum.SortOrder.LayoutOrder
+                })
+
+                Tab.Items = { Content = TItems["Container"] }
+
+                TItems["Button"]:Connect("MouseButton1Down", function()
+                    for _, T in TabBox.Tabs do
+                        T.TItems["Container"].Instance.Visible = false
+                        T.TItems["Button"]:Tween(nil, {TextTransparency = 0.4})
+                    end
+                    TItems["Container"].Instance.Visible = true
+                    TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    TabBox.ActiveTab = Tab
+                end)
+
+                Tab.TItems = TItems
+                
+                TabBox.Tabs[#TabBox.Tabs + 1] = Tab
+                
+                if #TabBox.Tabs == 1 then
+                    TItems["Container"].Instance.Visible = true
+                    TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    TabBox.ActiveTab = Tab
+                end
+                
+                return setmetatable(Tab, Library.Sections)
+            end
+            
+            if self.Elements then
+                self.Elements[#self.Elements + 1] = TabBox
+            end
+
+            return TabBox
+        end
+
         Library.Sections.Toggle = function(self, Data)
             Data = Data or { }
             
