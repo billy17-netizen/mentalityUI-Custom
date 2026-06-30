@@ -5858,10 +5858,15 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 }
                 
                 local TItems = {}
+                local ButtonText = Name
+                if Icon and Name ~= "" then
+                    ButtonText = "       " .. Name
+                end
+
                 TItems["Button"] = Instances:Create("TextButton", {
                     Parent = Items["TopBar"].Instance,
                     Name = " ",
-                    Text = Name,
+                    Text = ButtonText,
                     FontFace = Library.Font,
                     TextSize = 13,
                     TextColor3 = FromRGB(240, 240, 240),
@@ -5873,50 +5878,32 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Size = UDim2New(0, 0, 1, 0)
                 })  TItems["Button"]:AddToTheme({TextColor3 = "Text"})
 
+                local padLeft = (Icon and Name == "") and 14 or 10
+                local padRight = (Icon and Name == "") and 14 or 10
+
+                Instances:Create("UIPadding", {
+                    Parent = TItems["Button"].Instance,
+                    Name = " ",
+                    PaddingLeft = UDimNew(0, padLeft),
+                    PaddingRight = UDimNew(0, padRight)
+                })
+
                 if Icon then
-                    if Name ~= "" then
-                        Instances:Create("UIPadding", {
-                            Parent = TItems["Button"].Instance,
-                            Name = " ",
-                            PaddingLeft = UDimNew(0, 24),
-                            PaddingRight = UDimNew(0, 10)
-                        })
-                        TItems["Icon"] = Instances:Create("ImageLabel", {
-                            Parent = TItems["Button"].Instance,
-                            Name = " ",
-                            Size = UDim2New(0, 14, 0, 14),
-                            Position = UDim2New(0, -16, 0.5, 0),
-                            AnchorPoint = Vector2New(0, 0.5),
-                            BackgroundTransparency = 1,
-                            ZIndex = 2
-                        })
-                    else
-                        Instances:Create("UIPadding", {
-                            Parent = TItems["Button"].Instance,
-                            Name = " ",
-                            PaddingLeft = UDimNew(0, 14),
-                            PaddingRight = UDimNew(0, 14)
-                        })
-                        TItems["Icon"] = Instances:Create("ImageLabel", {
-                            Parent = TItems["Button"].Instance,
-                            Name = " ",
-                            Size = UDim2New(0, 14, 0, 14),
-                            Position = UDim2New(0.5, 0, 0.5, 0),
-                            AnchorPoint = Vector2New(0.5, 0.5),
-                            BackgroundTransparency = 1,
-                            ZIndex = 2
-                        })
-                    end
+                    local iconPos = (Name ~= "") and UDim2New(0, 0, 0.5, 0) or UDim2New(0.5, 0, 0.5, 0)
+                    local iconAnchor = (Name ~= "") and Vector2New(0, 0.5) or Vector2New(0.5, 0.5)
+                    
+                    TItems["Icon"] = Instances:Create("ImageLabel", {
+                        Parent = TItems["Button"].Instance,
+                        Name = " ",
+                        Size = UDim2New(0, 14, 0, 14),
+                        Position = iconPos,
+                        AnchorPoint = iconAnchor,
+                        BackgroundTransparency = 1,
+                        ZIndex = 2
+                    })
                     Library:SetIcon(TItems["Icon"].Instance, Icon)
                     TItems["Icon"]:AddToTheme({ImageColor3 = "Text"})
                     TItems["Icon"].Instance.ImageTransparency = 0.5
-                else
-                    Instances:Create("UIPadding", {
-                        Parent = TItems["Button"].Instance,
-                        Name = " ",
-                        PaddingLeft = UDimNew(0, 10),
-                        PaddingRight = UDimNew(0, 10)
-                    })
                 end
 
                 TItems["ActiveHighlight"] = Instances:Create("Frame", {
