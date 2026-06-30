@@ -212,9 +212,9 @@ MyGroupBox:Toggle({
 })
 
 local MyTabBox = MyGroupBox:TabBox()
-local Tab1 = MyTabBox:Tab({ Name = "Tab 1", Icon = "swords" })
-local Tab2 = MyTabBox:Tab({ Name = "Tab 2", Icon = "settings" })
-local Tab3 = MyTabBox:Tab({ Name = "", Icon = "user" }) -- Icon only tab
+local Tab1 = MyTabBox:Tab({ Name = "Both", Icon = "swords" }) -- Icon and Text
+local Tab2 = MyTabBox:Tab({ Name = "", Icon = "settings" }) -- Icon only
+local Tab3 = MyTabBox:Tab("Text Only") -- Text only
 
 Tab1:Slider({
     Name = "Slider in Tab 1",
