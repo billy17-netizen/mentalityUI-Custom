@@ -2641,7 +2641,7 @@ local Library do
             local Items = { } do 
                 Items["OverlayList"] = Instances:Create("Frame", {
                     Parent = Library.Holder.Instance,
-                    Name = " ",
+                    Name = "\0",
                     BorderColor3 = FromRGB(0, 0, 0),
                     AnchorPoint = Vector2New(0, 0),
                     BackgroundTransparency = 0.30000001192092896,
@@ -2656,12 +2656,12 @@ local Library do
                 
                 Instances:Create("UICorner", {
                     Parent = Items["OverlayList"].Instance,
-                    Name = " "
+                    Name = "\0"
                 })
                 
                 Items["Top"] = Instances:Create("Frame", {
                     Parent = Items["OverlayList"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     BorderColor3 = FromRGB(0, 0, 0),
                     Size = UDim2New(1, 12, 0, 40),
                     BorderSizePixel = 0,
@@ -2670,7 +2670,7 @@ local Library do
                 
                 Items["Icon"] = Instances:Create("ImageLabel", {
                     Parent = Items["Top"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     ImageColor3 = FromRGB(255, 255, 255),
                     BorderColor3 = FromRGB(0, 0, 0),
                     Size = UDim2New(0, 21, 0, 20),
@@ -2685,7 +2685,7 @@ local Library do
                 
                 Instances:Create("UIGradient", {
                     Parent = Items["Icon"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     Color = RGBSequence{RGBSequenceKeypoint(0, FromRGB(131, 131, 131)), RGBSequenceKeypoint(1, FromRGB(255, 255, 255))}
                 }):AddToTheme({Color = function()
                     return RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
@@ -2693,7 +2693,7 @@ local Library do
                 
                 Items["OverlayName"] = Instances:Create("TextLabel", {
                     Parent = Items["Top"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     FontFace = Library.Font,
                     TextColor3 = FromRGB(248, 248, 248),
                     BorderColor3 = FromRGB(0, 0, 0),
@@ -2711,12 +2711,12 @@ local Library do
                 
                 Instances:Create("UICorner", {
                     Parent = Items["Top"].Instance,
-                    Name = " "
+                    Name = "\0"
                 })
                 
                 Instances:Create("Frame", {
                     Parent = Items["Top"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     AnchorPoint = Vector2New(0, 1),
                     Position = UDim2New(0, 0, 1, 0),
                     BorderColor3 = FromRGB(0, 0, 0),
@@ -2727,7 +2727,7 @@ local Library do
                 
                 Instances:Create("Frame", {
                     Parent = Items["Top"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     AnchorPoint = Vector2New(1, 1),
                     Position = UDim2New(1, 0, 1, 0),
                     BorderColor3 = FromRGB(0, 0, 0),
@@ -2738,7 +2738,7 @@ local Library do
                 
                 Items["Content"] = Instances:Create("Frame", {
                     Parent = Items["OverlayList"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     BorderColor3 = FromRGB(0, 0, 0),
                     BackgroundTransparency = 1,
                     Position = UDim2New(0, 0, 0, 40),
@@ -2750,14 +2750,14 @@ local Library do
 
                 Instances:Create("UIListLayout", {
                     Parent = Items["Content"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     Padding = UDimNew(0, 4),
                     SortOrder = Enum.SortOrder.LayoutOrder
                 })
                 
                 Instances:Create("UIPadding", {
                     Parent = Items["Content"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     PaddingTop = UDimNew(0, 8),
                     PaddingBottom = UDimNew(0, 8),
                     PaddingRight = UDimNew(0, 8),
@@ -2766,7 +2766,7 @@ local Library do
                 
                 Instances:Create("UIPadding", {
                     Parent = Items["OverlayList"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     PaddingRight = UDimNew(0, 12)
                 })                
             end
@@ -2778,7 +2778,7 @@ local Library do
             function OverlayList:Add(Text, Value)
                 local Row = Instances:Create("TextButton", {
                     Parent = Items["Content"].Instance,
-                    Name = " ",
+                    Name = "\0",
                     FontFace = Library.Font,
                     TextColor3 = FromRGB(0, 0, 0),
                     BorderColor3 = FromRGB(0, 0, 0),
@@ -2793,7 +2793,7 @@ local Library do
                 
                 local RowAccent = Instances:Create("Frame", {
                     Parent = Row.Instance,
-                    Name = " ",
+                    Name = "\0",
                     BorderColor3 = FromRGB(0, 0, 0),
                     AnchorPoint = Vector2New(0, 0.5),
                     BackgroundTransparency = 1,
@@ -2805,7 +2805,7 @@ local Library do
 
                 Instances:Create("UIGradient",{
                     Parent = RowAccent.Instance,
-                    Name = " ",
+                    Name = "\0",
                     Rotation = -115,
                     Color = RGBSequence{RGBSequenceKeypoint(0, FromRGB(255, 255, 255)), RGBSequenceKeypoint(1, FromRGB(143, 143, 143))}
                 }):AddToTheme({Color = function()
@@ -2814,12 +2814,12 @@ local Library do
                 
                 Instances:Create("UICorner", {
                     Parent = RowAccent.Instance,
-                    Name = " "
+                    Name = "\0"
                 })
                 
                 local RowText = Instances:Create("TextLabel", {
                     Parent = Row.Instance,
-                    Name = " ",
+                    Name = "\0",
                     FontFace = Library.Font,
                     TextColor3 = FromRGB(255, 255, 255),
                     TextTransparency = 0.30000001192092896,
