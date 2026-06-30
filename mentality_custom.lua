@@ -2629,6 +2629,282 @@ local Library do
             end)
         end
 
+
+        Library.OverlayList = function(self, Data)
+            Data = Data or {}
+            local OverlayName = Data.Name or Data.name or "Overlay"
+            local OverlayIcon = Data.Icon or Data.icon or "list"
+            
+            local OverlayList = { }
+            
+            local Items = { } do 
+                Items["OverlayList"] = Instances:Create("Frame", {
+                    Parent = Library.Holder.Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    AnchorPoint = Vector2New(0, 0),
+                    BackgroundTransparency = 0.3,
+                    Position = UDim2New(0, 20, 0, 140),
+                    Size = UDim2New(0, 140, 0, 30),
+                    BorderSizePixel = 0,
+                    AutomaticSize = Enum.AutomaticSize.XY,
+                    BackgroundColor3 = FromRGB(27, 25, 29)
+                })  Items["OverlayList"]:AddToTheme({BackgroundColor3 = "Section Background"})
+
+                Items["OverlayList"]:MakeDraggableLerp(0.05)
+                
+                Instances:Create("UICorner", {
+                    Parent = Items["OverlayList"].Instance,
+                    Name = "\0",
+                    CornerRadius = UDimNew(0, 4)
+                })
+                
+                Items["Top"] = Instances:Create("Frame", {
+                    Parent = Items["OverlayList"].Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    Size = UDim2New(1, 12, 0, 40),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(31, 31, 36)
+                })  Items["Top"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                
+                Items["Icon"] = Instances:Create("ImageLabel", {
+                    Parent = Items["Top"].Instance,
+                    Name = "\0",
+                    ImageColor3 = FromRGB(255, 255, 255),
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    Size = UDim2New(0, 21, 0, 20),
+                    AnchorPoint = Vector2New(0, 0.5),
+                    Image = Library:GetIcon(OverlayIcon),
+                    BackgroundTransparency = 1,
+                    Position = UDim2New(0, 15, 0.5, 0),
+                    ZIndex = 2,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+                
+                Instances:Create("UIGradient", {
+                    Parent = Items["Icon"].Instance,
+                    Name = "\0",
+                    Color = RGBSequence{RGBSequenceKeypoint(0, FromRGB(131, 131, 131)), RGBSequenceKeypoint(1, FromRGB(255, 255, 255))}
+                }):AddToTheme({Color = function()
+                    return RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                end})
+                
+                Items["Title"] = Instances:Create("TextLabel", {
+                    Parent = Items["Top"].Instance,
+                    Name = "\0",
+                    FontFace = Library.Font,
+                    TextColor3 = FromRGB(255, 255, 255),
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    Text = OverlayName,
+                    AnchorPoint = Vector2New(0, 0.5),
+                    BackgroundTransparency = 1,
+                    Position = UDim2New(0, 45, 0.5, 0),
+                    Size = UDim2New(1, -55, 0, 15),
+                    BorderSizePixel = 0,
+                    ZIndex = 2,
+                    TextSize = 14,
+                    TextXAlignment = Enum.TextXAlignment.Left,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })  Items["Title"]:AddToTheme({TextColor3 = "Text"})
+                
+                Instances:Create("UICorner", {
+                    Parent = Items["Top"].Instance,
+                    Name = "\0",
+                    CornerRadius = UDimNew(0, 4)
+                })
+                
+                Items["Line"] = Instances:Create("Frame", {
+                    Parent = Items["Top"].Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    AnchorPoint = Vector2New(0, 1),
+                    Position = UDim2New(0, 0, 1, 0),
+                    Size = UDim2New(1, 0, 0, 2),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Instances:Create("UIGradient", {
+                    Parent = Items["Line"].Instance,
+                    Name = "\0",
+                    Color = RGBSequence{RGBSequenceKeypoint(0, FromRGB(131, 131, 131)), RGBSequenceKeypoint(1, FromRGB(255, 255, 255))}
+                }):AddToTheme({Color = function()
+                    return RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                end})
+                
+                Instances:Create("Frame", {
+                    Parent = Items["Top"].Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    AnchorPoint = Vector2New(0, 1),
+                    Position = UDim2New(0, 0, 1, 0),
+                    Size = UDim2New(1, 0, 0, 1),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(31, 31, 36)
+                }):AddToTheme({BackgroundColor3 = "Section Background 2"})
+                
+                Items["Content"] = Instances:Create("Frame", {
+                    Parent = Items["OverlayList"].Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    BackgroundTransparency = 1,
+                    Position = UDim2New(0, 0, 0, 40),
+                    Size = UDim2New(1, 12, 0, 0),
+                    BorderSizePixel = 0,
+                    AutomaticSize = Enum.AutomaticSize.Y,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Instances:Create("UIListLayout", {
+                    Parent = Items["Content"].Instance,
+                    Name = "\0",
+                    Padding = UDimNew(0, 4),
+                    SortOrder = Enum.SortOrder.LayoutOrder
+                })
+                
+                Instances:Create("UIPadding", {
+                    Parent = Items["Content"].Instance,
+                    Name = "\0",
+                    PaddingTop = UDimNew(0, 8),
+                    PaddingBottom = UDimNew(0, 8),
+                    PaddingRight = UDimNew(0, 8),
+                    PaddingLeft = UDimNew(0, 8)
+                })
+                
+                Items["HideBottom"] = Instances:Create("Frame", {
+                    Parent = Items["Content"].Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    BackgroundTransparency = 1,
+                    Size = UDim2New(1, 0, 0, -4),
+                    LayoutOrder = 100000,
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+            end
+
+            function OverlayList:Add(Text, Value)
+                local Row = Instances:Create("TextButton", {
+                    Parent = Items["Content"].Instance,
+                    Name = "\0",
+                    FontFace = Library.Font,
+                    TextColor3 = FromRGB(0, 0, 0),
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    Text = "",
+                    AutoButtonColor = false,
+                    BackgroundTransparency = 1,
+                    Size = UDim2New(1, 0, 0, 20),
+                    BorderSizePixel = 0,
+                    TextSize = 14,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+                
+                local RowAccent = Instances:Create("Frame", {
+                    Parent = Row.Instance,
+                    Name = "\0",
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    AnchorPoint = Vector2New(0, 0.5),
+                    BackgroundTransparency = 1,
+                    Position = UDim2New(0, 0, 0.5, 0),
+                    Size = UDim2New(0, 6, 0, 6),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Instances:Create("UIGradient",{
+                    Parent = RowAccent.Instance,
+                    Name = "\0",
+                    Rotation = -115,
+                    Color = RGBSequence{RGBSequenceKeypoint(0, FromRGB(255, 255, 255)), RGBSequenceKeypoint(1, FromRGB(143, 143, 143))}
+                }):AddToTheme({Color = function()
+                    return RGBSequence{RGBSequenceKeypoint(0, Library.Theme.Accent), RGBSequenceKeypoint(1, Library.Theme.AccentGradient)}
+                end})
+                
+                Instances:Create("UICorner", {
+                    Parent = RowAccent.Instance,
+                    Name = "\0",
+                    CornerRadius = UDimNew(1, 0)
+                })
+                
+                local RowText = Instances:Create("TextLabel", {
+                    Parent = Row.Instance,
+                    Name = "\0",
+                    FontFace = Library.Font,
+                    TextColor3 = FromRGB(255, 255, 255),
+                    TextTransparency = 0.1,
+                    Text = Text,
+                    AnchorPoint = Vector2New(0, 0.5),
+                    BackgroundTransparency = 1,
+                    Position = UDim2New(0, 16, 0.5, 0),
+                    Size = UDim2New(1, -20, 1, 0),
+                    BorderSizePixel = 0,
+                    ZIndex = 2,
+                    TextSize = 13,
+                    TextXAlignment = Enum.TextXAlignment.Left,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })  RowText:AddToTheme({TextColor3 = "Text"})
+
+                local RowValue
+                if Value then
+                    RowValue = Instances:Create("TextLabel", {
+                        Parent = Row.Instance,
+                        Name = "\0",
+                        FontFace = Library.Font,
+                        TextColor3 = FromRGB(255, 255, 255),
+                        TextTransparency = 0.1,
+                        Text = Value,
+                        AnchorPoint = Vector2New(1, 0.5),
+                        BackgroundTransparency = 1,
+                        Position = UDim2New(1, -2, 0.5, 0),
+                        Size = UDim2New(0, 100, 1, 0),
+                        BorderSizePixel = 0,
+                        ZIndex = 2,
+                        TextSize = 13,
+                        TextXAlignment = Enum.TextXAlignment.Right,
+                        BackgroundColor3 = FromRGB(255, 255, 255)
+                    })  RowValue:AddToTheme({TextColor3 = "Text"})
+                end
+                
+                local totalWidth = RowText.Instance.TextBounds.X + 60 + (Value and 50 or 0)
+                if totalWidth > Items["OverlayList"].Instance.Size.X.Offset then 
+                    Items["OverlayList"].Instance.Size = UDim2New(0, totalWidth, 0, 30)
+                end
+
+                local RowObj = { Instance = Row }
+                function RowObj:Set(NewText, NewValue)
+                    RowText.Instance.Text = NewText
+                    if RowValue and NewValue then
+                        RowValue.Instance.Text = NewValue
+                    end
+                end
+                function RowObj:Remove()
+                    Row.Instance:Destroy()
+                end
+
+                return RowObj
+            end
+            
+            function OverlayList:Clear()
+                for _, child in pairs(Items["Content"].Instance:GetChildren()) do
+                    if child:IsA("TextButton") then
+                        child:Destroy()
+                    end
+                end
+            end
+
+            function OverlayList:SetVisibility(State)
+                Items["OverlayList"].Instance.Visible = State
+            end
+
+            function OverlayList:UpdateTitle(NewTitle)
+                Items["Title"].Instance.Text = NewTitle
+            end
+
+            return OverlayList
+        end
+
         Library.Window = function(self, Data)
             Data = Data or { }
 

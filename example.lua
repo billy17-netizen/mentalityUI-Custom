@@ -47,6 +47,15 @@ local Window = Library:Window({
 -- Floating keybind list (optional). Omit on pure touch if you prefer.
 local KeybindList = Library:KeybindList("Keybinds")
 
+-- Floating generic overlay (e.g. for Spectators)
+local SpectatorList = Library:OverlayList({
+    Name = "Spectators",
+    Icon = "eye" -- lucide icon name
+})
+SpectatorList:Add("billy17-netizen", "[Admin]")
+SpectatorList:Add("samuraa1")
+SpectatorList:Add("Player3", "[Viewing]")
+
 -- ───────────────────────────────────────────────────────────────────────────
 -- 3) Sidebar: categories + tab divider + normal pages
 -- ───────────────────────────────────────────────────────────────────────────
