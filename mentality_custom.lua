@@ -3492,7 +3492,7 @@ local Library do
                 if Data.ShowPing then
                     Items["PingLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "Ping: 0ms",
@@ -3508,12 +3508,12 @@ local Library do
                     })
                     Instances:Create("UICorner", {
                         Parent = Items["PingLabel"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         CornerRadius = UDimNew(0, 4)
                     })
                     Instances:Create("UIStroke", {
                         Parent = Items["PingLabel"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         Color = FromRGB(45, 45, 45),
                         Thickness = 1
                     }):AddToTheme({Color = "Border"})
@@ -3524,7 +3524,7 @@ local Library do
                     local fpsOffset = Data.ShowPing and -178 or -95
                     Items["FPSLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "FPS: 0",
@@ -3540,12 +3540,12 @@ local Library do
                     })
                     Instances:Create("UICorner", {
                         Parent = Items["FPSLabel"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         CornerRadius = UDimNew(0, 4)
                     })
                     Instances:Create("UIStroke", {
                         Parent = Items["FPSLabel"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         Color = FromRGB(45, 45, 45),
                         Thickness = 1
                     }):AddToTheme({Color = "Border"})
