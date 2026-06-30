@@ -3498,13 +3498,13 @@ local Library do
                         Text = "Ping: 0ms",
                         AnchorPoint = Vector2New(1, 0),
                         Size = UDim2New(0, 80, 0, 15),
-                        BackgroundTransparency = 1,
+                        BackgroundTransparency = 0,
                         Position = UDim2New(1, -95, 0, 13),
                         BorderSizePixel = 0,
-                        ZIndex = 2,
+                        ZIndex = 100,
                         TextSize = 13,
                         TextXAlignment = Enum.TextXAlignment.Right,
-                        BackgroundColor3 = FromRGB(255, 255, 255)
+                        BackgroundColor3 = FromRGB(255, 0, 0)
                     }) Items["PingLabel"]:AddToTheme({TextColor3 = "Text"})
                 end
 
@@ -3518,13 +3518,13 @@ local Library do
                         Text = "FPS: 0",
                         AnchorPoint = Vector2New(1, 0),
                         Size = UDim2New(0, 80, 0, 15),
-                        BackgroundTransparency = 1,
+                        BackgroundTransparency = 0,
                         Position = UDim2New(1, fpsOffset, 0, 13),
                         BorderSizePixel = 0,
-                        ZIndex = 2,
+                        ZIndex = 100,
                         TextSize = 13,
                         TextXAlignment = Enum.TextXAlignment.Right,
-                        BackgroundColor3 = FromRGB(255, 255, 255)
+                        BackgroundColor3 = FromRGB(255, 0, 0)
                     }) Items["FPSLabel"]:AddToTheme({TextColor3 = "Text"})
                 end
 
