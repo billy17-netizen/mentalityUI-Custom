@@ -5836,8 +5836,17 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             end
             
             function TabBox:Tab(Data)
-                local Name = type(Data) == "string" and Data or Data.Name or Data.name or ""
-                local Icon = type(Data) == "table" and (Data.Icon or Data.icon) or nil
+                local Name = ""
+                local Icon = nil
+                if type(Data) == "string" then
+                    Name = Data
+                elseif type(Data) == "table" then
+                    local rawName = Data.Name or Data.name
+                    if type(rawName) == "string" then
+                        Name = rawName
+                    end
+                    Icon = Data.Icon or Data.icon
+                end
 
                 local Tab = {
                     Name = Name,
