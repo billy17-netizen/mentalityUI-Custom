@@ -5909,14 +5909,20 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 TItems["ActiveHighlight"] = Instances:Create("Frame", {
                     Parent = TItems["Button"].Instance,
                     Name = " ",
-                    Size = UDim2New(1, 0, 0, 1),
-                    Position = UDim2New(0.5, 0, 1, 0),
-                    AnchorPoint = Vector2New(0.5, 1),
+                    Size = UDim2New(1, 0, 1, 0),
+                    Position = UDim2New(0.5, 0, 0.5, 0),
+                    AnchorPoint = Vector2New(0.5, 0.5),
                     BackgroundColor3 = FromRGB(255, 255, 255),
-                    ZIndex = 2,
-                    BackgroundTransparency = 0,
+                    ZIndex = 1,
+                    BackgroundTransparency = 0.85,
                     Visible = false
-                }) TItems["ActiveHighlight"]:AddToTheme({BackgroundColor3 = "Accent"})
+                }) 
+                Instances:Create("UICorner", {
+                    Parent = TItems["ActiveHighlight"].Instance,
+                    Name = " ",
+                    CornerRadius = UDimNew(0, 4)
+                })
+                TItems["ActiveHighlight"]:AddToTheme({BackgroundColor3 = "Accent"})
 
                 TItems["Container"] = Instances:Create("Frame", {
                     Parent = Items["Content"].Instance,
@@ -5949,20 +5955,20 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 TItems["Button"]:Connect("MouseButton1Down", function()
                     for _, T in pairs(TabBox.Tabs) do
                         T.TItems["Container"].Instance.Visible = false
-                        T.TItems["Button"]:Tween(nil, {TextTransparency = 0.5})
                         T.TItems["Button"]:ChangeItemTheme({TextColor3 = "Text"})
+                        T.TItems["Button"]:Tween(nil, {TextTransparency = 0.5, TextColor3 = Library.Theme.Text})
                         if T.TItems["Icon"] then
-                            T.TItems["Icon"]:Tween(nil, {ImageTransparency = 0.5})
                             T.TItems["Icon"]:ChangeItemTheme({ImageColor3 = "Text"})
+                            T.TItems["Icon"]:Tween(nil, {ImageTransparency = 0.5, ImageColor3 = Library.Theme.Text})
                         end
                         T.TItems["ActiveHighlight"].Instance.Visible = false
                     end
                     TItems["Container"].Instance.Visible = true
-                    TItems["Button"]:Tween(nil, {TextTransparency = 0})
                     TItems["Button"]:ChangeItemTheme({TextColor3 = "Accent"})
+                    TItems["Button"]:Tween(nil, {TextTransparency = 0, TextColor3 = Library.Theme.Accent})
                     if TItems["Icon"] then
-                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0})
                         TItems["Icon"]:ChangeItemTheme({ImageColor3 = "Accent"})
+                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0, ImageColor3 = Library.Theme.Accent})
                     end
                     TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
@@ -5974,11 +5980,11 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 
                 if #TabBox.Tabs == 1 then
                     TItems["Container"].Instance.Visible = true
-                    TItems["Button"]:Tween(nil, {TextTransparency = 0})
                     TItems["Button"]:ChangeItemTheme({TextColor3 = "Accent"})
+                    TItems["Button"]:Tween(nil, {TextTransparency = 0, TextColor3 = Library.Theme.Accent})
                     if TItems["Icon"] then
-                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0})
                         TItems["Icon"]:ChangeItemTheme({ImageColor3 = "Accent"})
+                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0, ImageColor3 = Library.Theme.Accent})
                     end
                     TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
