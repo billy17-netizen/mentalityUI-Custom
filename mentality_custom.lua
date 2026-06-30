@@ -3492,7 +3492,7 @@ local Library do
                 if Data.ShowPing then
                     Items["PingLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "Ping: 0ms",
@@ -3512,7 +3512,7 @@ local Library do
                     local fpsOffset = Data.ShowPing and -185 or -95
                     Items["FPSLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = " ",
+                        Name = "\0",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "FPS: 0",
