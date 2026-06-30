@@ -211,9 +211,10 @@ MyGroupBox:Toggle({
     Callback = print
 })
 
-local MyTabBox = Right:TabBox()
-local Tab1 = MyTabBox:Tab("Tab 1")
-local Tab2 = MyTabBox:Tab("Tab 2")
+local MyTabBox = MyGroupBox:TabBox()
+local Tab1 = MyTabBox:Tab({ Name = "Tab 1", Icon = "swords" })
+local Tab2 = MyTabBox:Tab({ Name = "Tab 2", Icon = "settings" })
+local Tab3 = MyTabBox:Tab({ Name = "", Icon = "user" }) -- Icon only tab
 
 Tab1:Slider({
     Name = "Slider in Tab 1",

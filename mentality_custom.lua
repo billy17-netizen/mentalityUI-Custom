@@ -5835,7 +5835,10 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 end
             end
             
-            function TabBox:Tab(Name)
+            function TabBox:Tab(Data)
+                local Name = type(Data) == "string" and Data or Data.Name or Data.name or ""
+                local Icon = type(Data) == "table" and (Data.Icon or Data.icon) or nil
+
                 local Tab = {
                     Name = Name,
                     Window = self.Window,
@@ -5860,13 +5863,38 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     ZIndex = 2,
                     Size = UDim2New(0, 0, 1, 0)
                 })  TItems["Button"]:AddToTheme({TextColor3 = "Text"})
-                
-                Instances:Create("UIPadding", {
-                    Parent = TItems["Button"].Instance,
-                    Name = " ",
-                    PaddingLeft = UDimNew(0, 14),
-                    PaddingRight = UDimNew(0, 14)
-                })
+
+                if Icon then
+                    -- If Icon is provided, we make space in the text if there's text
+                    local padLeft = (Name ~= "") and 24 or 18
+                    Instances:Create("UIPadding", {
+                        Parent = TItems["Button"].Instance,
+                        Name = " ",
+                        PaddingLeft = UDimNew(0, padLeft),
+                        PaddingRight = UDimNew(0, 10)
+                    })
+
+                    TItems["Icon"] = Instances:Create("ImageLabel", {
+                        Parent = TItems["Button"].Instance,
+                        Name = " ",
+                        Size = UDim2New(0, 14, 0, 14),
+                        Position = UDim2New(0, 8, 0.5, 0),
+                        AnchorPoint = Vector2New(0, 0.5),
+                        BackgroundTransparency = 1,
+                        ZIndex = 2
+                    })
+                    Library:SetIcon(TItems["Icon"].Instance, Icon)
+                    TItems["Icon"]:AddToTheme({ImageColor3 = "Text"})
+                    
+                    TItems["Icon"].Instance.ImageTransparency = 0.5
+                else
+                    Instances:Create("UIPadding", {
+                        Parent = TItems["Button"].Instance,
+                        Name = " ",
+                        PaddingLeft = UDimNew(0, 10),
+                        PaddingRight = UDimNew(0, 10)
+                    })
+                end
 
                 TItems["ActiveHighlight"] = Instances:Create("Frame", {
                     Parent = TItems["Button"].Instance,
@@ -5882,9 +5910,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     Parent = Items["Content"].Instance,
                     Name = " ",
                     Size = UDim2New(1, 0, 0, 0),
-                    ZIndex = 2,
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundTransparency = 1,
+                    ZIndex = 2,
                     Visible = false
                 })
                 
@@ -5910,10 +5938,16 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     for _, T in pairs(TabBox.Tabs) do
                         T.TItems["Container"].Instance.Visible = false
                         T.TItems["Button"]:Tween(nil, {TextTransparency = 0.5})
+                        if T.TItems["Icon"] then
+                            T.TItems["Icon"]:Tween(nil, {ImageTransparency = 0.5})
+                        end
                         T.TItems["ActiveHighlight"].Instance.Visible = false
                     end
                     TItems["Container"].Instance.Visible = true
                     TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    if TItems["Icon"] then
+                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0})
+                    end
                     TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
                 end)
@@ -5925,6 +5959,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 if #TabBox.Tabs == 1 then
                     TItems["Container"].Instance.Visible = true
                     TItems["Button"]:Tween(nil, {TextTransparency = 0})
+                    if TItems["Icon"] then
+                        TItems["Icon"]:Tween(nil, {ImageTransparency = 0})
+                    end
                     TItems["ActiveHighlight"].Instance.Visible = true
                     TabBox.ActiveTab = Tab
                 end
