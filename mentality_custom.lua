@@ -3492,40 +3492,64 @@ local Library do
                 if Data.ShowPing then
                     Items["PingLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = "\0",
+                        Name = " ",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "Ping: 0ms",
-                        AnchorPoint = Vector2New(1, 0),
-                        Size = UDim2New(0, 80, 0, 15),
+                        AnchorPoint = Vector2New(1, 0.5),
+                        Size = UDim2New(0, 75, 0, 24),
                         BackgroundTransparency = 0,
-                        Position = UDim2New(1, -95, 0, 13),
+                        Position = UDim2New(1, -95, 0, 27),
                         BorderSizePixel = 0,
-                        ZIndex = 100,
+                        ZIndex = 2,
                         TextSize = 13,
-                        TextXAlignment = Enum.TextXAlignment.Right,
-                        BackgroundColor3 = FromRGB(255, 0, 0)
-                    }) Items["PingLabel"]:AddToTheme({TextColor3 = "Text"})
+                        TextXAlignment = Enum.TextXAlignment.Center,
+                        BackgroundColor3 = FromRGB(27, 25, 29)
+                    })
+                    Instances:Create("UICorner", {
+                        Parent = Items["PingLabel"].Instance,
+                        Name = " ",
+                        CornerRadius = UDimNew(0, 4)
+                    })
+                    Instances:Create("UIStroke", {
+                        Parent = Items["PingLabel"].Instance,
+                        Name = " ",
+                        Color = FromRGB(45, 45, 45),
+                        Thickness = 1
+                    }):AddToTheme({Color = "Border"})
+                    Items["PingLabel"]:AddToTheme({TextColor3 = "Text", BackgroundColor3 = "Element"})
                 end
 
                 if Data.ShowFPS then
-                    local fpsOffset = Data.ShowPing and -185 or -95
+                    local fpsOffset = Data.ShowPing and -178 or -95
                     Items["FPSLabel"] = Instances:Create("TextLabel", {
                         Parent = Items["MainFrame"].Instance,
-                        Name = "\0",
+                        Name = " ",
                         FontFace = Library.Font,
                         TextColor3 = FromRGB(240, 240, 240),
                         Text = "FPS: 0",
-                        AnchorPoint = Vector2New(1, 0),
-                        Size = UDim2New(0, 80, 0, 15),
+                        AnchorPoint = Vector2New(1, 0.5),
+                        Size = UDim2New(0, 75, 0, 24),
                         BackgroundTransparency = 0,
-                        Position = UDim2New(1, fpsOffset, 0, 13),
+                        Position = UDim2New(1, fpsOffset, 0, 27),
                         BorderSizePixel = 0,
-                        ZIndex = 100,
+                        ZIndex = 2,
                         TextSize = 13,
-                        TextXAlignment = Enum.TextXAlignment.Right,
-                        BackgroundColor3 = FromRGB(255, 0, 0)
-                    }) Items["FPSLabel"]:AddToTheme({TextColor3 = "Text"})
+                        TextXAlignment = Enum.TextXAlignment.Center,
+                        BackgroundColor3 = FromRGB(27, 25, 29)
+                    })
+                    Instances:Create("UICorner", {
+                        Parent = Items["FPSLabel"].Instance,
+                        Name = " ",
+                        CornerRadius = UDimNew(0, 4)
+                    })
+                    Instances:Create("UIStroke", {
+                        Parent = Items["FPSLabel"].Instance,
+                        Name = " ",
+                        Color = FromRGB(45, 45, 45),
+                        Thickness = 1
+                    }):AddToTheme({Color = "Border"})
+                    Items["FPSLabel"]:AddToTheme({TextColor3 = "Text", BackgroundColor3 = "Element"})
                 end
 
                 local lastUpdate = 0
