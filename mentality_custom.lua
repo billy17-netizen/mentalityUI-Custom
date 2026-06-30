@@ -3516,7 +3516,7 @@ local Library do
                         Name = "\0",
                         Color = FromRGB(45, 45, 45),
                         Thickness = 1
-                    }):AddToTheme({Color = "Border"})
+                    })
                     Items["PingLabel"]:AddToTheme({TextColor3 = "Text", BackgroundColor3 = "Element"})
                 end
 
@@ -3548,7 +3548,7 @@ local Library do
                         Name = "\0",
                         Color = FromRGB(45, 45, 45),
                         Thickness = 1
-                    }):AddToTheme({Color = "Border"})
+                    })
                     Items["FPSLabel"]:AddToTheme({TextColor3 = "Text", BackgroundColor3 = "Element"})
                 end
 
