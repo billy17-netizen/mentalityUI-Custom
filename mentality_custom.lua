@@ -5874,27 +5874,41 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 })  TItems["Button"]:AddToTheme({TextColor3 = "Text"})
 
                 if Icon then
-                    -- If Icon is provided, we make space in the text if there's text
-                    local padLeft = (Name ~= "") and 24 or 18
-                    Instances:Create("UIPadding", {
-                        Parent = TItems["Button"].Instance,
-                        Name = " ",
-                        PaddingLeft = UDimNew(0, padLeft),
-                        PaddingRight = UDimNew(0, 10)
-                    })
-
-                    TItems["Icon"] = Instances:Create("ImageLabel", {
-                        Parent = TItems["Button"].Instance,
-                        Name = " ",
-                        Size = UDim2New(0, 14, 0, 14),
-                        Position = UDim2New(0, 8, 0.5, 0),
-                        AnchorPoint = Vector2New(0, 0.5),
-                        BackgroundTransparency = 1,
-                        ZIndex = 2
-                    })
+                    if Name ~= "" then
+                        Instances:Create("UIPadding", {
+                            Parent = TItems["Button"].Instance,
+                            Name = " ",
+                            PaddingLeft = UDimNew(0, 24),
+                            PaddingRight = UDimNew(0, 10)
+                        })
+                        TItems["Icon"] = Instances:Create("ImageLabel", {
+                            Parent = TItems["Button"].Instance,
+                            Name = " ",
+                            Size = UDim2New(0, 14, 0, 14),
+                            Position = UDim2New(0, -16, 0.5, 0),
+                            AnchorPoint = Vector2New(0, 0.5),
+                            BackgroundTransparency = 1,
+                            ZIndex = 2
+                        })
+                    else
+                        Instances:Create("UIPadding", {
+                            Parent = TItems["Button"].Instance,
+                            Name = " ",
+                            PaddingLeft = UDimNew(0, 14),
+                            PaddingRight = UDimNew(0, 14)
+                        })
+                        TItems["Icon"] = Instances:Create("ImageLabel", {
+                            Parent = TItems["Button"].Instance,
+                            Name = " ",
+                            Size = UDim2New(0, 14, 0, 14),
+                            Position = UDim2New(0.5, 0, 0.5, 0),
+                            AnchorPoint = Vector2New(0.5, 0.5),
+                            BackgroundTransparency = 1,
+                            ZIndex = 2
+                        })
+                    end
                     Library:SetIcon(TItems["Icon"].Instance, Icon)
                     TItems["Icon"]:AddToTheme({ImageColor3 = "Text"})
-                    
                     TItems["Icon"].Instance.ImageTransparency = 0.5
                 else
                     Instances:Create("UIPadding", {
