@@ -3485,6 +3485,74 @@ local Library do
                 end
             end)]]
 
+            if Data.ShowFPS or Data.ShowPing then
+                local RunService = game:GetService("RunService")
+                local Stats = game:GetService("Stats")
+
+                if Data.ShowPing then
+                    Items["PingLabel"] = Instances:Create("TextLabel", {
+                        Parent = Items["MainFrame"].Instance,
+                        Name = " ",
+                        FontFace = Library.Font,
+                        TextColor3 = FromRGB(240, 240, 240),
+                        Text = "Ping: 0ms",
+                        AutomaticSize = Enum.AutomaticSize.X,
+                        AnchorPoint = Vector2New(1, 0),
+                        Size = UDim2New(0, 0, 0, 15),
+                        BackgroundTransparency = 1,
+                        Position = UDim2New(1, -95, 0, 13),
+                        BorderSizePixel = 0,
+                        ZIndex = 2,
+                        TextSize = 13,
+                        TextXAlignment = Enum.TextXAlignment.Right,
+                        BackgroundColor3 = FromRGB(255, 255, 255)
+                    }) Items["PingLabel"]:AddToTheme({TextColor3 = "Text"})
+                end
+
+                if Data.ShowFPS then
+                    local fpsOffset = Data.ShowPing and -185 or -95
+                    Items["FPSLabel"] = Instances:Create("TextLabel", {
+                        Parent = Items["MainFrame"].Instance,
+                        Name = " ",
+                        FontFace = Library.Font,
+                        TextColor3 = FromRGB(240, 240, 240),
+                        Text = "FPS: 0",
+                        AutomaticSize = Enum.AutomaticSize.X,
+                        AnchorPoint = Vector2New(1, 0),
+                        Size = UDim2New(0, 0, 0, 15),
+                        BackgroundTransparency = 1,
+                        Position = UDim2New(1, fpsOffset, 0, 13),
+                        BorderSizePixel = 0,
+                        ZIndex = 2,
+                        TextSize = 13,
+                        TextXAlignment = Enum.TextXAlignment.Right,
+                        BackgroundColor3 = FromRGB(255, 255, 255)
+                    }) Items["FPSLabel"]:AddToTheme({TextColor3 = "Text"})
+                end
+
+                local lastUpdate = 0
+                local frames = 0
+                
+                Library:Connect(RunService.RenderStepped, function()
+                    frames = frames + 1
+                    local now = os.clock()
+                    if now - lastUpdate >= 1 then
+                        if Items["FPSLabel"] then
+                            Items["FPSLabel"].Instance.Text = "FPS: " .. tostring(math.floor(frames / (now - lastUpdate)))
+                        end
+                        if Items["PingLabel"] then
+                            local ping = 0
+                            pcall(function()
+                                ping = math.floor(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
+                            end)
+                            Items["PingLabel"].Instance.Text = "Ping: " .. tostring(ping) .. "ms"
+                        end
+                        frames = 0
+                        lastUpdate = now
+                    end
+                end)
+            end
+
             Window:SetCenter()
             task.wait()
             Window:SetOpen(true)

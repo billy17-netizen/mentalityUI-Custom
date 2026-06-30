@@ -33,6 +33,8 @@ local Window = Library:Window({
     Name = "Example Hub",
     SubName = "MentalityUI",
     Logo = "97594400820219",
+    ShowFPS = true,
+    ShowPing = true
 })
 
 -- Floating keybind list (optional). Omit on pure touch if you prefer.
