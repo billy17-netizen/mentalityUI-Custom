@@ -12,7 +12,7 @@
 -- ───────────────────────────────────────────────────────────────────────────
 -- 1) Load the library (raw from GitHub — change branch if you fork)
 -- ───────────────────────────────────────────────────────────────────────────
-local LIB_URL = "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/1dfea16cac10beddc1ebf64d708b8732b26ee47e/mentality_custom.lua"
+local LIB_URL = "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/345745704751fb75819255420addcac271c2d8a5/mentality_custom.lua"
 local src = game:HttpGet(LIB_URL .. "?t=" .. tostring(os.time()))
 local fn, err = loadstring(src)
 if not fn then
