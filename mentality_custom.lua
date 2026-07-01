@@ -3257,7 +3257,7 @@ local Library do
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(255, 255, 255)
-                })  Items["SavedColors"]:AddToTheme({ScrollBarImageColor3 = "Accent"})
+                })
                 
                 
                 Items["Title"] = Instances:Create("TextLabel", {
@@ -9635,6 +9635,7 @@ end
 
 getgenv().Library = Library
 return Library
+
 
 
 
