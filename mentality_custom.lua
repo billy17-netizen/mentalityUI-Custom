@@ -1755,8 +1755,7 @@ local Library do
                     BottomImage = "rbxassetid://86870199131153",
                     BackgroundTransparency = 1,
                     BackgroundColor3 = FromRGB(255, 255, 255)
-                }) 
-                
+                })  Items["SavedColors"]:AddToTheme({ScrollBarImageColor3 = "Accent"})                
                 Instances:Create("UIGridLayout", {
                     Parent = Items["SavedColors"].Instance,
                     Name = "\0",
@@ -3041,8 +3040,7 @@ local Library do
                     Active = true,
                     ClipsDescendants = true,
                     ZIndex = 3,
-                })
-
+                })  Items["LeftTabsScroll"]:AddToTheme({ScrollBarImageColor3 = "Accent"})
                 -- Blur on LeftTabs caused a dark seam at the bottom-left; main panel blur is enough.
                 local Gui = Items["MainFrame"].Instance
 
@@ -3259,8 +3257,7 @@ local Library do
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(255, 255, 255)
-                }) 
-
+                })  Items["SavedColors"]:AddToTheme({ScrollBarImageColor3 = "Accent"})
                 
                 
                 Items["Title"] = Instances:Create("TextLabel", {
@@ -4013,7 +4010,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                         ZIndex = 2,
                         BorderSizePixel = 0,
                         CanvasSize = UDim2New(0, 0, 0, 0)
-                    })
+                    })  NewColumn:AddToTheme({ScrollBarImageColor3 = "Accent"})
                     
                     Instances:Create("UIListLayout", {
                         Parent = NewColumn.Instance,
@@ -9638,6 +9635,10 @@ end
 
 getgenv().Library = Library
 return Library
+
+
+
+
 
 
 
