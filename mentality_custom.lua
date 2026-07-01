@@ -2252,6 +2252,8 @@ local Library do
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(31, 31, 36)
                 })  Items["Top"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                table.insert(Library.TransparentItems, Items["Top"].Instance)
+                Items["Top"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["Icon"] = Instances:Create("ImageLabel", {
                     Parent = Items["Top"].Instance,
@@ -2668,6 +2670,8 @@ local Library do
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(31, 31, 36)
                 })  Items["Top"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                table.insert(Library.TransparentItems, Items["Top"].Instance)
+                Items["Top"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["Icon"] = Instances:Create("ImageLabel", {
                     Parent = Items["Top"].Instance,
@@ -5619,6 +5623,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     AutomaticSize = Enum.AutomaticSize.Y,
                     BackgroundColor3 = FromRGB(29, 28, 32)
                 })  Items["Section"]:AddToTheme({BackgroundColor3 = "Section Background 2"})
+                table.insert(Library.TransparentItems, Items["Section"].Instance)
+                Items["Section"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["Top"] = Instances:Create("Frame", {
                     Parent = Items["Section"].Instance,
@@ -5630,6 +5636,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(31, 31, 36)
                 })  Items["Top"]:AddToTheme({BackgroundColor3 = "Outline"})
+                table.insert(Library.TransparentItems, Items["Top"].Instance)
+                Items["Top"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["TopBackground"] = Instances:Create("Frame", {
                     Parent = Items["Top"].Instance,
@@ -5642,6 +5650,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(26, 26, 30)
                 })  Items["TopBackground"]:AddToTheme({BackgroundColor3 = "Section Top"})
+                table.insert(Library.TransparentItems, Items["TopBackground"].Instance)
+                Items["TopBackground"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["Icon"] = Instances:Create("ImageLabel", {
                     Parent = Items["TopBackground"].Instance,
