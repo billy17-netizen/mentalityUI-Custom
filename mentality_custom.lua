@@ -6033,7 +6033,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
                     Color = FromRGB(60, 60, 65),
                     Transparency = 0
-                }) gbStroke:AddToTheme({Color = "Outline"})
+                }) gbStroke:AddToTheme({Color = "Accent"})
 
                 Items["Title"] = Instances:Create("TextLabel", {
                     Parent = Items["GroupBox"].Instance,
@@ -6129,7 +6129,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
                     Color = FromRGB(60, 60, 65),
                     Transparency = 0
-                }) tbStroke:AddToTheme({Color = "Outline"})
+                }) tbStroke:AddToTheme({Color = "Accent"})
 
                 Items["TopBar"] = Instances:Create("Frame", {
                     Parent = Items["TabBox"].Instance,
@@ -9638,6 +9638,7 @@ end
 
 getgenv().Library = Library
 return Library
+
 
 
 
