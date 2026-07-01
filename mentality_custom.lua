@@ -92,6 +92,7 @@ local Library do
 
         ThemeMap = { },
         ThemeItems = { },
+        TransparentItems = { },
 
         OpenFrames = { },
 
@@ -3385,6 +3386,11 @@ local Library do
                             Items["FloatingButton"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"]
                         end
                     end
+                    for _, item in pairs(Library.TransparentItems) do
+                        if item then
+                            item.BackgroundTransparency = Library.Flags["BackgroundTransparency"]
+                        end
+                    end
                 end
 
                 Instances:Create("UIGradient", {
@@ -5999,6 +6005,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(20, 20, 25)
                 })  Items["GroupBox"]:AddToTheme({BackgroundColor3 = "Background"})
+                table.insert(Library.TransparentItems, Items["GroupBox"].Instance)
+                Items["GroupBox"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0
 
                 Instances:Create("UICorner", {
                     Parent = Items["GroupBox"].Instance,
@@ -6093,6 +6101,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(20, 20, 25)
                 })  Items["TabBox"]:AddToTheme({BackgroundColor3 = "Background"})
+                table.insert(Library.TransparentItems, Items["TabBox"].Instance)
+                Items["TabBox"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0
 
                 Instances:Create("UICorner", {
                     Parent = Items["TabBox"].Instance,
