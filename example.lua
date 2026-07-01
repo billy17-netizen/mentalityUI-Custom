@@ -26,10 +26,10 @@ local Library = fn()
 
 -- Optional: same repo helpers (load only if you use them)
 local SaveManager = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/SaveManager.lua"
+    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/SaveManager.lua?t=" .. tostring(os.time())
 ))()
 local ThemeManager = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/ThemeManager.lua"
+    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/ThemeManager.lua?t=" .. tostring(os.time())
 ))()
 
 -- ───────────────────────────────────────────────────────────────────────────
