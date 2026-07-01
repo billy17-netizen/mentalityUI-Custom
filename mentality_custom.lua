@@ -3937,7 +3937,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(255, 255, 255)
-                })  Library:SetIcon(Items["Icon"].Instance, Page.Icon)
+                })  Library:SetIcon(Items["Icon"].Instance, Page.Icon) Items["Icon"]:AddToTheme({ImageColor3 = "Text"})
 
                 Instances:Create("UIGradient", {
                     Parent = Items["Icon"].Instance,
@@ -4227,7 +4227,7 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(255, 255, 255)
-                })  Library:SetIcon(DashItems["Icon"].Instance, DashPage.Icon)
+                })  Library:SetIcon(DashItems["Icon"].Instance, DashPage.Icon) DashItems["Icon"]:AddToTheme({ImageColor3 = "Text"})
 
                 Instances:Create("UIGradient", {
                     Parent = DashItems["Icon"].Instance,
@@ -9638,6 +9638,7 @@ end
 
 getgenv().Library = Library
 return Library
+
 
 
 
