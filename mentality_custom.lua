@@ -3381,6 +3381,7 @@ local Library do
                 })
 
                 function Window:SetTransparency()
+                    print("Setting transparency to", Library.Flags["BackgroundTransparency"], "for", #Library.TransparentItems, "items")
                     Items["MainFrame"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] 
                     Items["LeftTabs"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"]  
                     if Items["FloatingButton"] then
@@ -5897,6 +5898,8 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     BorderSizePixel = 0,
                     BackgroundColor3 = FromRGB(24, 22, 25)
                 })  Items["Background"]:AddToTheme({BackgroundColor3 = "Section Background"})
+                  table.insert(Library.TransparentItems, Items["Background"].Instance)
+                  Items["Background"].Instance.BackgroundTransparency = Library.Flags["BackgroundTransparency"] or 0.65
                 
                 Items["Content"] = Instances:Create("Frame", {
                     Parent = Items["Background"].Instance,
