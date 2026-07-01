@@ -25,12 +25,12 @@ local Library = fn()
 -- Library:SetKeybindRowsVisible(false) — hide all per-row keybind UIs (e.g. mobile).
 
 -- Optional: same repo helpers (load only if you use them)
--- local SaveManager = loadstring(game:HttpGet(
---     "https://raw.githubusercontent.com/samuraa1/MentalityUI/main/SaveManager.lua"
--- ))()
--- local ThemeManager = loadstring(game:HttpGet(
---     "https://raw.githubusercontent.com/samuraa1/MentalityUI/main/ThemeManager.lua"
--- ))()
+local SaveManager = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/SaveManager.lua"
+))()
+local ThemeManager = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/billy17-netizen/mentalityUI-Custom/main/ThemeManager.lua"
+))()
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- 2) Window — root container (sidebar + pages)
@@ -262,25 +262,15 @@ Right:Listbox({
 -- ───────────────────────────────────────────────────────────────────────────
 local SettingsPage = Library:CreateSettingsPage(Window, KeybindList)
 
--- Example: ThemeManager section (uncomment if you loaded ThemeManager.lua)
---[[
-local TM = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/samuraa1/MentalityUI/main/ThemeManager.lua"
-))()
-TM:SetLibrary(Library)
-TM:SetFolder("MyHubThemes")
-TM:BuildThemeSection(SettingsPage)
-]]
+-- Example: ThemeManager section
+ThemeManager:SetLibrary(Library)
+ThemeManager:SetFolder("MyHubThemes")
+ThemeManager:BuildThemeSection(SettingsPage)
 
--- Example: SaveManager config UI (uncomment if you loaded SaveManager.lua)
---[[
-local SM = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/samuraa1/MentalityUI/main/SaveManager.lua"
-))()
-SM:SetLibrary(Library)
-SM:SetFolder("MyHubConfigs")
-SM:BuildConfigSection(SettingsPage)
-]]
+-- Example: SaveManager config UI
+SaveManager:SetLibrary(Library)
+SaveManager:SetFolder("MyHubConfigs")
+SaveManager:BuildConfigSection(SettingsPage)
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- 7) Extra page — placeholder for your game logic
