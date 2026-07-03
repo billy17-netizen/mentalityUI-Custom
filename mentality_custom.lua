@@ -1082,7 +1082,7 @@ local Library do
     end
 
     Library.LoadConfig = function(self, Config)
-        if not Config or Config == "" then warn("CONFIG IS EMPTY!") return false end
+        if not Config or Config == "" then if Library.Notify then pcall(function() Library:Notify({Title="Debug Load", Description="Config text is EMPTY!"}) end) end return false end
         local success, Decoded = pcall(function() return HttpService:JSONDecode(Config) end)
         if not success or type(Decoded) ~= "table" then warn("DECODE FAILED!") return false, "JSON Decode Failed" end
         
@@ -1109,7 +1109,7 @@ local Library do
             end
         end)
         
-        warn("Loaded config! Set " .. tostring(count) .. " flags, skipped " .. tostring(skipped))
+        if Library.Notify then pcall(function() Library:Notify({Title="Debug Load", Description="Set: " .. tostring(count) .. ", Skipped: " .. tostring(skipped)}) end) end
         return Success, Result
     end
 
