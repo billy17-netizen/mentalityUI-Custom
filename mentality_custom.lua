@@ -1060,7 +1060,25 @@ local Library do
             end
         end)
 
-        return HttpService:JSONEncode(Config)
+                local success, encoded = pcall(function() return HttpService:JSONEncode(Config) end)
+        if not success then
+            local sanitized = {}
+            for k, v in pairs(Config) do
+                local t = type(v)
+                if t == "string" or t == "number" or t == "boolean" then sanitized[k] = v
+                elseif t == "table" then
+                    local safeTable = {}
+                    for tk, tv in pairs(v) do
+                        local tvt = type(tv)
+                        if tvt == "string" or tvt == "number" or tvt == "boolean" then safeTable[tk] = tv end
+                    end
+                    sanitized[k] = safeTable
+                end
+            end
+            local s2, e2 = pcall(function() return HttpService:JSONEncode(sanitized) end)
+            return s2 and e2 or "{}"
+        end
+        return encoded
     end
 
     Library.LoadConfig = function(self, Config)
