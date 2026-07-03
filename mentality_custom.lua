@@ -9549,13 +9549,24 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 Name = "Load",
                 Callback = function()
                     local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
-                    if not target then return end
+                    if not target then 
+                        if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="Target is nil (ketik nama dulu!)"}) end) end
+                        return 
+                    end
                     local fn = Library:ConfigDisplayToFile(target)
                     if fn then
                         local succ, content = pcall(readfile, Library.Folders.Configs .. "/" .. fn)
-                        if succ and content and type(content) == "string" and content ~= "" then
-                            Library:LoadConfig(content)
+                        if not succ then
+                            if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="readfile ERROR!"}) end) end
+                            return
                         end
+                        if not content or content == "" then
+                            if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="File is empty!"}) end) end
+                            return
+                        end
+                        Library:LoadConfig(content)
+                    else
+                        if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="Invalid filename!"}) end) end
                     end
                 end
             })
