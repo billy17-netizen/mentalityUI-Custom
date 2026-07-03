@@ -9511,8 +9511,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             ConfigsSection:Button({
                 Name = "Delete",
                 Callback = function()
-                    if ConfigSelected then
-                        Library:DeleteConfig(ConfigSelected)
+                    local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
+                    if target then
+                        Library:DeleteConfig(target)
                         Library:RefreshConfigsList(ConfigsDropdown)
                     end
                 end
@@ -9521,8 +9522,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             ConfigsSection:Button({
                 Name = "Load",
                 Callback = function()
-                    if not ConfigSelected then return end
-                    local fn = Library:ConfigDisplayToFile(ConfigSelected)
+                    local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
+                    if not target then return end
+                    local fn = Library:ConfigDisplayToFile(target)
                     if fn and isfile(Library.Folders.Configs .. "/" .. fn) then
                         Library:LoadConfig(readfile(Library.Folders.Configs .. "/" .. fn))
                     end
@@ -9532,8 +9534,9 @@ Position = UDim2New(0.5, 0, 0.5, 0),
             ConfigsSection:Button({
                 Name = "Save",
                 Callback = function()
-                    if not ConfigSelected then return end
-                    local fn = Library:ConfigDisplayToFile(ConfigSelected)
+                    local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
+                    if not target then return end
+                    local fn = Library:ConfigDisplayToFile(target)
                     if fn then
                         writefile(Library.Folders.Configs .. "/" .. fn, Library:GetConfig())
                         Library:RefreshConfigsList(ConfigsDropdown)
