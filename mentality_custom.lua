@@ -1082,9 +1082,9 @@ local Library do
     end
 
     Library.LoadConfig = function(self, Config)
-        if not Config or Config == "" then if Library.Notify then pcall(function() Library:Notify({Title="Debug Load", Description="Config text is EMPTY!"}) end) end return false end
+        if not Config or Config == "" then if Library.Notification then pcall(function() Library:Notification({Title="Debug Load", Description="Config text is EMPTY!"}) end) end return false end
         local success, Decoded = pcall(function() return HttpService:JSONDecode(Config) end)
-        if not success or type(Decoded) ~= "table" then if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="JSON Decode Failed!"}) end) end return false, "JSON Decode Failed" end
+        if not success or type(Decoded) ~= "table" then if Library.Notification then pcall(function() Library:Notification({Title="Debug", Description="JSON Decode Failed!"}) end) end return false, "JSON Decode Failed" end
         
         local count = 0
         local skipped = 0
@@ -1109,7 +1109,7 @@ local Library do
             end
         end)
         
-        if Library.Notify then pcall(function() Library:Notify({Title="Debug Load", Description="Set: " .. tostring(count) .. ", Skipped: " .. tostring(skipped)}) end) end
+        if Library.Notification then pcall(function() Library:Notification({Title="Debug Load", Description="Set: " .. tostring(count) .. ", Skipped: " .. tostring(skipped)}) end) end
         return Success, Result
     end
 
@@ -9550,23 +9550,23 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                 Callback = function()
                     local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
                     if not target then 
-                        if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="Target is nil (ketik nama dulu!)"}) end) end
+                        if Library.Notification then pcall(function() Library:Notification({Title="Debug", Description="Target is nil (ketik nama dulu!)"}) end) end
                         return 
                     end
                     local fn = Library:ConfigDisplayToFile(target)
                     if fn then
                         local succ, content = pcall(readfile, Library.Folders.Configs .. "/" .. fn)
                         if not succ then
-                            if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="readfile ERROR!"}) end) end
+                            if Library.Notification then pcall(function() Library:Notification({Title="Debug", Description="readfile ERROR!"}) end) end
                             return
                         end
                         if not content or content == "" then
-                            if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="File is empty!"}) end) end
+                            if Library.Notification then pcall(function() Library:Notification({Title="Debug", Description="File is empty!"}) end) end
                             return
                         end
                         Library:LoadConfig(content)
                     else
-                        if Library.Notify then pcall(function() Library:Notify({Title="Debug", Description="Invalid filename!"}) end) end
+                        if Library.Notification then pcall(function() Library:Notification({Title="Debug", Description="Invalid filename!"}) end) end
                     end
                 end
             })
