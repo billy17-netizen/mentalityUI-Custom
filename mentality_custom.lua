@@ -1082,16 +1082,22 @@ local Library do
     end
 
     Library.LoadConfig = function(self, Config)
+        if not Config or Config == "" then warn("CONFIG IS EMPTY!") return false end
         local success, Decoded = pcall(function() return HttpService:JSONDecode(Config) end)
-        if not success or type(Decoded) ~= "table" then return false, "JSON Decode Failed" end
+        if not success or type(Decoded) ~= "table" then warn("DECODE FAILED!") return false, "JSON Decode Failed" end
+        
+        local count = 0
+        local skipped = 0
 
         local Success, Result = Library:SafeCall(function()
             for Index, Value in pairs(Decoded) do 
                 local SetFunction = Library.SetFlags[Index]
 
                 if not SetFunction then
+                    skipped = skipped + 1
                     continue
                 end
+                count = count + 1
 
                 if type(Value) == "table" and Value.Key then 
                     SetFunction(Value)
@@ -1102,7 +1108,8 @@ local Library do
                 end
             end
         end)
-
+        
+        warn("Loaded config! Set " .. tostring(count) .. " flags, skipped " .. tostring(skipped))
         return Success, Result
     end
 
