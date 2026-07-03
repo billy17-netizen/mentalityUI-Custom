@@ -9543,8 +9543,11 @@ Position = UDim2New(0.5, 0, 0.5, 0),
                     local target = ConfigSelected or ConfigName or (Library.Flags and Library.Flags.ConfigsName)
                     if not target then return end
                     local fn = Library:ConfigDisplayToFile(target)
-                    if fn and isfile(Library.Folders.Configs .. "/" .. fn) then
-                        Library:LoadConfig(readfile(Library.Folders.Configs .. "/" .. fn))
+                    if fn then
+                        local succ, content = pcall(readfile, Library.Folders.Configs .. "/" .. fn)
+                        if succ and content and type(content) == "string" and content ~= "" then
+                            Library:LoadConfig(content)
+                        end
                     end
                 end
             })
