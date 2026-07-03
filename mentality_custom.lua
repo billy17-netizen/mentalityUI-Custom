@@ -1082,7 +1082,8 @@ local Library do
     end
 
     Library.LoadConfig = function(self, Config)
-        local Decoded = HttpService:JSONDecode(Config)
+        local success, Decoded = pcall(function() return HttpService:JSONDecode(Config) end)
+        if not success or type(Decoded) ~= "table" then return false, "JSON Decode Failed" end
 
         local Success, Result = Library:SafeCall(function()
             for Index, Value in pairs(Decoded) do 
